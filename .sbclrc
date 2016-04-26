@@ -1,0 +1,12 @@
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames ".common-lisp/quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
+(let ((interactive-init 
+  (merge-pathnames ".common-lisp/sbcl-readline.lisp"
+                   (user-homedir-pathname)))
+  )
+  (when (probe-file interactive-init)
+    (load interactive-init)))
