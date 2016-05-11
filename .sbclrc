@@ -6,7 +6,11 @@
 
 (let ((interactive-init 
   (merge-pathnames ".common-lisp/sbcl-readline.lisp"
-                   (user-homedir-pathname)))
-  )
+                   (user-homedir-pathname))))
   (when (probe-file interactive-init)
     (load interactive-init)))
+
+(defun store-executable (x)
+  (sb-ext:save-lisp-and-die 
+    (format nil "~A.bin" x)
+    :toplevel #'main :executable t))
